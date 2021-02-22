@@ -29,8 +29,7 @@ function objToSql(ob) {
       if (typeof value === "string" && value.indexOf(" ") >= 0) {
         value = "'" + value + "'";
       }
-      // e.g. {name: 'Lana Del Grey'} => ["name='Lana Del Grey'"]
-      // e.g. {sleepy: true} => ["sleepy=true"]
+
       arr.push(key + "=" + value);
     }
   }
@@ -41,8 +40,8 @@ function objToSql(ob) {
 
 // Object for all our SQL statement functions.
 var orm = {
-  selectAll: function(tableInput, cb) {
-    var queryString = "SELECT * FROM " + tableInput + ";";
+    selectAll:(tableInput, cb)=>{
+    var queryString = "SELECT * FROM" + tableInput + ";";
     connection.query(queryString, function(err, result) {
       if (err) {
         throw err;
@@ -50,8 +49,8 @@ var orm = {
       cb(result);
     });
   },
-  insertOne:function (table, cols, vals, cb) {
-    var queryString = "INSERT INTO " + table;
+  insertOne:(table, cols, vals, cb)=>{
+    var queryString = "INSERT INTO" + table;
 
     queryString += " (";
     queryString += cols.toString();
@@ -70,9 +69,9 @@ var orm = {
       cb(result);
     });
   },
-  // An example of objColVals would be {name: panther, sleepy: true}
-  updateONe: function(table, objColVals, condition, cb) {
-    var queryString = "UPDATE " + table;
+  // An example of objColVals would be {}
+  updateOne:(table, objColVals, condition, cb)=>{
+    var queryString ="UPDATE"+ table;
 
     queryString += " SET ";
     queryString += objToSql(objColVals);

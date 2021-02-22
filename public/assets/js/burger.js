@@ -8,7 +8,7 @@ $(function() {
     };
 
     // Send the PUT request.
-    $.ajax("/api/burgers/" + id, {
+    $.ajax("/api/burger/" + id, {
       type: "PUT",
       data: newBurgerState
     }).then(
@@ -25,7 +25,7 @@ $(function() {
 
     var newBurger = {
       name: $("#bur").val().trim(),
-      devoured: $("[name=burger]:checked").val().trim()
+      devoured: $("[name=burgers]:checked").val().trim(),
     };
 
     // Send the POST request.
